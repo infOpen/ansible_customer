@@ -3,9 +3,6 @@ Ansible customer
 ================
 
 
-.. image:: https://img.shields.io/pypi/v/ansible_customer.svg
-        :target: https://pypi.python.org/pypi/ansible_customer
-
 .. image:: https://img.shields.io/travis/infOpen/ansible_customer.svg
         :target: https://travis-ci.org/infOpen/ansible_customer
 

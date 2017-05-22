@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
 
-import click
+"""
+This module manage the cli for this package
+"""
 
 
-@click.command()
+from invoke import Collection, Program
+import tasks # pylint: disable=locally-disabled, relative-import
+
+
 def main(args=None):
     """Console script for ansible_customer"""
-    click.echo("Replace this message by putting your code into "
-               "ansible_customer.cli.main")
-    click.echo("See click documentation at http://click.pocoo.org/")
+
+    program = Program(
+        name='Ansible Customer Invoke tasks',
+        namespace=Collection.from_module(tasks),
+        version='0.1.0')
+    program.run(args)
 
 
 if __name__ == "__main__":

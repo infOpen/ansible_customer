@@ -10,8 +10,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'Click>=6.0',
-    # TODO: put package requirements here
+    'invoke==0.17.0',
 ]
 
 test_requirements = [
@@ -33,7 +32,7 @@ setup(
                  'ansible_customer'},
     entry_points={
         'console_scripts': [
-            'ansible_customer=ansible_customer.cli:main'
+            'aci=ansible_customer.cli:main'
         ]
     },
     include_package_data=True,

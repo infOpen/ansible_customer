@@ -1,0 +1,10 @@
+# Coverage settings
+
+[run]
+source = ansible_customer
+
+[html]
+directory = reports/coverage-html
+
+[xml]
+output = reports/coverage.xml
