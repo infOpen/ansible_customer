@@ -6,7 +6,7 @@ This module manage the cli for this package
 
 
 from invoke import Collection, Program
-import tasks # pylint: disable=locally-disabled, relative-import
+from . import tasks
 
 
 def main(args=None):

@@ -35,12 +35,9 @@ def test_cli_from_shell():
     Test cli usage from shell
     """
 
-    command = ('PYTHONPATH=$PYTHONPATH:./:./ansible_customer '
-               '/usr/bin/env python '
-               './ansible_customer/cli.py')
-
     command_output = subprocess.check_output(
-        command, shell=True, stderr=subprocess.STDOUT)
+        'aci --help', shell=True, stderr=subprocess.STDOUT)
+
     assert 'Usage:' in command_output.decode('utf-8')
     assert 'Subcommands:' in command_output.decode('utf-8')
 
