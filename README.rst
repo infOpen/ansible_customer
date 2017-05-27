@@ -21,11 +21,11 @@ Ansible customer
         :target: https://pyup.io/repos/github/infOpen/ansible_customer/
         :alt: Python 3
 
-.. image:: https://codecov.io/gh/infOpen/ansible_customer/branch/master/graph/badge.svg
+.. image:: https://img.shields.io/codecov/c/github/infOpen/ansible_customer/master.svg?label=coverage_master
         :target: https://codecov.io/gh/infOpen/ansible_customer
         :alt: Codecov master 
 
-.. image:: https://codecov.io/gh/infOpen/ansible_customer/branch/develop/graph/badge.svg
+.. image:: https://img.shields.io/codecov/c/github/infOpen/ansible_customer/develop.svg?label=coverage_develop
         :target: https://codecov.io/gh/infOpen/ansible_customer
         :alt: Codecov develop 
 
