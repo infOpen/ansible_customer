@@ -2,7 +2,7 @@
 History
 =======
 
-0.1.0 (2017-05-08)
-------------------
+0.1.0-alpha+001 (2017-05-27)
+----------------------------
 
-* First release on PyPI.
+* Create a pre-release to add pyup management (see #3)
