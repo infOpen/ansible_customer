@@ -29,6 +29,14 @@ Ansible customer
         :target: https://codecov.io/gh/infOpen/ansible_customer
         :alt: Codecov develop 
 
+.. image:: https://img.shields.io/codacy/grade/10406cf9151649b7865a75704c95640d/master.svg?label=code_quality_master
+        :target: https://www.codacy.com/app/achaussier/ansible_customer
+        :alt: Codacy master
+
+.. image:: https://img.shields.io/codacy/grade/10406cf9151649b7865a75704c95640d/develop.svg?label=code_quality_develop
+        :target: https://www.codacy.com/app/achaussier/ansible_customer
+        :alt: Codacy develop
+
 
 Python module to manage an Ansible project, linked to Infopen Ansible customer cookiecutter template.
 
