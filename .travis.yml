@@ -11,9 +11,9 @@ deploy:
   provider: pypi
   user: infOpen
 env:
-- TOXENV=py35
-- TOXENV=py34
-- TOXENV=py27
+  - TOXENV=py35-travis
+  - TOXENV=py34-travis
+  - TOXENV=py27-travis
 install: pip install -U tox
 language: python
 python: 3.5
