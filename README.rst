@@ -17,6 +17,10 @@ Ansible customer
      :target: https://pyup.io/repos/github/infOpen/ansible_customer/
      :alt: Updates
 
+.. image:: https://pyup.io/repos/github/infOpen/ansible_customer/python-3-shield.svg
+     :target: https://pyup.io/repos/github/infOpen/ansible_customer/
+     :alt: Python 3
+
 
 Python module to manage an Ansible project, linked to Infopen Ansible customer cookiecutter template.
 
