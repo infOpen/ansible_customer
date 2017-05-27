@@ -14,12 +14,20 @@ Ansible customer
         :alt: Documentation Status
 
 .. image:: https://pyup.io/repos/github/infOpen/ansible_customer/shield.svg
-     :target: https://pyup.io/repos/github/infOpen/ansible_customer/
-     :alt: Updates
+        :target: https://pyup.io/repos/github/infOpen/ansible_customer/
+        :alt: Updates
 
 .. image:: https://pyup.io/repos/github/infOpen/ansible_customer/python-3-shield.svg
-     :target: https://pyup.io/repos/github/infOpen/ansible_customer/
-     :alt: Python 3
+        :target: https://pyup.io/repos/github/infOpen/ansible_customer/
+        :alt: Python 3
+
+.. image:: https://codecov.io/gh/infOpen/ansible_customer/branch/master/graph/badge.svg
+        :target: https://codecov.io/gh/infOpen/ansible_customer
+        :alt: Codecov master 
+
+.. image:: https://codecov.io/gh/infOpen/ansible_customer/branch/develop/graph/badge.svg
+        :target: https://codecov.io/gh/infOpen/ansible_customer
+        :alt: Codecov develop 
 
 
 Python module to manage an Ansible project, linked to Infopen Ansible customer cookiecutter template.
