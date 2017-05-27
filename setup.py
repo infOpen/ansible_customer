@@ -20,7 +20,7 @@ test_requirements = [
 
 setup(
     name='ansible_customer',
-    version='0.1.0',
+    version='version='0.1.0'',
     description="Python module to manage an Ansible project, linked to Infopen cookiecutter-ansible-customer template.",
     long_description=readme + '\n\n' + history,
     author="Alexandre Chaussier",
