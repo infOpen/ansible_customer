@@ -23,11 +23,11 @@ Ansible customer
 
 .. image:: https://img.shields.io/codecov/c/github/infOpen/ansible_customer/master.svg?label=coverage_master
         :target: https://codecov.io/gh/infOpen/ansible_customer
-        :alt: Codecov master 
+        :alt: Codecov master
 
 .. image:: https://img.shields.io/codecov/c/github/infOpen/ansible_customer/develop.svg?label=coverage_develop
         :target: https://codecov.io/gh/infOpen/ansible_customer
-        :alt: Codecov develop 
+        :alt: Codecov develop
 
 .. image:: https://img.shields.io/codacy/grade/10406cf9151649b7865a75704c95640d/master.svg?label=code_quality_master
         :target: https://www.codacy.com/app/achaussier/ansible_customer
@@ -37,8 +37,13 @@ Ansible customer
         :target: https://www.codacy.com/app/achaussier/ansible_customer
         :alt: Codacy develop
 
+-------------------------------------------------------------------------------
 
-Python module to manage an Ansible project, linked to Infopen Ansible customer cookiecutter template.
+Python module to manage an Ansible project, linked to `Infopen Ansible customer cookiecutter template`_.
+
+It expose some cli to manage an Ansible project, with settings for each environment.
+
+We use Invoke_ tasks, linked to their cli to run commands inside contexts.
 
 
 * Free software: MIT license
@@ -55,6 +60,7 @@ Credits
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
+.. _`Infopen Ansible customer cookiecutter template`: https://github.com/infOpen/cookiecutter-ansible-customer
+.. _Invoke: https://github.com/pyinvoke/invoke
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-
