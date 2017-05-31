@@ -53,7 +53,12 @@ We use Invoke_ tasks, linked to their cli to run commands inside contexts.
 Features
 --------
 
-* TODO
+Ansible cli wrapper
++++++++++++++++++++
+
+> Entry point: ``aci-ansible``
+
+This is the wrapper over the ``ansible`` command.
 
 Credits
 ---------
