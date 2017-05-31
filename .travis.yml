@@ -11,10 +11,14 @@ deploy:
   provider: pypi
   user: infOpen
 env:
-  - TOXENV=py35-travis
-  - TOXENV=py34-travis
-  - TOXENV=py27-travis
+  - TOXENV=ansible20-travis
+  - TOXENV=ansible21-travis
+  - TOXENV=ansible22-travis
+  - TOXENV=ansible23-travis
 install: pip install -U tox
 language: python
-python: 3.5
+python:
+  - 2.7
+  - 3.4
+  - 3.5
 script: tox -e ${TOXENV}
