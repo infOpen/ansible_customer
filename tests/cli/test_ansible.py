@@ -16,10 +16,10 @@ def test_cli_without_task(capsys):
 
     out, err = capsys.readouterr()
 
-    assert exit_info.value.code == 0
-    assert err == ''
-    assert 'Usage:' in out
-    assert 'Subcommands:' in out
+    assert exit_info.value.code == 0  # nosec
+    assert err == ''  # nosec
+    assert 'Usage:' in out  # nosec
+    assert 'Subcommands:' in out  # nosec
 
 
 def test_cli_run_task(capsys):
@@ -31,5 +31,5 @@ def test_cli_run_task(capsys):
 
     out, err = capsys.readouterr()
 
-    assert err == ''
-    assert 'Usage: ansible <host-pattern> [options]' in out
+    assert err == ''  # nosec
+    assert 'Usage: ansible <host-pattern> [options]' in out  # nosec
