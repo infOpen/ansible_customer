@@ -47,8 +47,8 @@ def test_cli_ping_task_without_hosts(capsys):
     out, err = capsys.readouterr()
 
     assert excinfo.value.code == 1  # nosec
-    assert err.strip() == (
-        "'ping' did not receive all required positional arguments!")  # nosec
+    assert err.strip() == (  # nosec
+        "'ping' did not receive all required positional arguments!")
     assert out == ''  # nosec
 
 
