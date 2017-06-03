@@ -10,7 +10,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'invoke==0.17.0',
+    'invoke==0.18.0',
 ]
 
 test_requirements = []
