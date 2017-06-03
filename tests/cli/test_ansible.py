@@ -2,6 +2,7 @@
 Ansible CLI testing
 """
 
+import os
 import pytest
 from ansible_customer.cli import ansible as ansible_cli
 
@@ -33,3 +34,55 @@ def test_cli_run_task(capsys):
 
     assert err == ''  # nosec
     assert 'Usage: ansible <host-pattern> [options]' in out  # nosec
+
+
+def test_cli_ping_task_without_hosts(capsys):
+    """
+    Test cli ping task without host mandatory argument
+    """
+
+    with pytest.raises(SystemExit) as excinfo:
+        ansible_cli.main('aci-ansible ping')
+
+    out, err = capsys.readouterr()
+
+    assert excinfo.value.code == 1  # nosec
+    assert err.strip() == (
+        "'ping' did not receive all required positional arguments!")  # nosec
+    assert out == ''  # nosec
+
+
+def test_cli_ping_task(capsys, ansible_project):
+    """
+    Test cli ping task
+    """
+
+    os.environ['ANSIBLE_INVENTORY'] = ansible_project.join('hosts').strpath
+
+    with pytest.raises(SystemExit) as excinfo:
+        ansible_cli.main('aci-ansible ping foo*')
+
+    out, err = capsys.readouterr()
+
+    assert excinfo.value.code == 3  # nosec
+    assert err == ''  # nosec
+    assert 'foo | UNREACHABLE!' in out.strip()  # nosec
+    assert 'foobar | UNREACHABLE!' in out.strip()  # nosec
+
+
+def test_cli_ping_task_with_limit(capsys, ansible_project):
+    """
+    Test cli ping task with limit argument
+    """
+
+    os.environ['ANSIBLE_INVENTORY'] = ansible_project.join('hosts').strpath
+
+    with pytest.raises(SystemExit) as excinfo:
+        ansible_cli.main('aci-ansible ping foo* --limit=foobar')
+
+    out, err = capsys.readouterr()
+
+    assert excinfo.value.code == 3  # nosec
+    assert err == ''  # nosec
+    assert 'foo | UNREACHABLE!' not in out.strip()  # nosec
+    assert 'foobar | UNREACHABLE!' in out.strip()  # nosec

@@ -60,6 +60,14 @@ Ansible cli wrapper
 
 This is the wrapper over the ``ansible`` command.
 
+Ping
+~~~~
+
+> ``aci-ansible ping my_hosts [--limit=foo]``
+
+Simple task to run ping module over an host list.
+
+
 Credits
 ---------
 
