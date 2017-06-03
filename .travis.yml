@@ -21,4 +21,14 @@ python:
   - 2.7
   - 3.4
   - 3.5
+matrix:
+  exclude:
+    - python: 3.4
+      env: TOXENV=ansible20-travis
+    - python: 3.4
+      env: TOXENV=ansible21-travis
+    - python: 3.5
+      env: TOXENV=ansible20-travis
+    - python: 3.5
+      env: TOXENV=ansible21-travis
 script: tox -e ${TOXENV}
