@@ -58,6 +58,7 @@ def test_cli_ping_task(capsys, ansible_project):
     """
 
     os.environ['ANSIBLE_INVENTORY'] = ansible_project.join('hosts').strpath
+    os.environ['ANSIBLE_HOST_KEY_CHECKING'] = False
 
     with pytest.raises(SystemExit) as excinfo:
         ansible_cli.main('aci-ansible ping foo*')
@@ -76,6 +77,7 @@ def test_cli_ping_task_with_limit(capsys, ansible_project):
     """
 
     os.environ['ANSIBLE_INVENTORY'] = ansible_project.join('hosts').strpath
+    os.environ['ANSIBLE_HOST_KEY_CHECKING'] = False
 
     with pytest.raises(SystemExit) as excinfo:
         ansible_cli.main('aci-ansible ping foo* --limit=foobar')
