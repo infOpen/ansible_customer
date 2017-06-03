@@ -17,10 +17,10 @@ def test_cli_without_task(capsys):
 
     out, err = capsys.readouterr()
 
-    assert exit_info.value.code == 0  # nosec
     assert err == ''  # nosec
     assert 'Usage:' in out  # nosec
     assert 'Subcommands:' in out  # nosec
+    assert exit_info.value.code == 0  # nosec
 
 
 def test_cli_run_task(capsys):
@@ -46,10 +46,10 @@ def test_cli_ping_task_without_hosts(capsys):
 
     out, err = capsys.readouterr()
 
-    assert excinfo.value.code == 1  # nosec
     assert err.strip() == (  # nosec
         "'ping' did not receive all required positional arguments!")
     assert out == ''  # nosec
+    assert excinfo.value.code == 1  # nosec
 
 
 def test_cli_ping_task(capsys, ansible_project):
@@ -64,10 +64,10 @@ def test_cli_ping_task(capsys, ansible_project):
 
     out, err = capsys.readouterr()
 
-    assert excinfo.value.code == 3  # nosec
     assert err == ''  # nosec
     assert 'foo | UNREACHABLE!' in out.strip()  # nosec
     assert 'foobar | UNREACHABLE!' in out.strip()  # nosec
+    assert excinfo.value.code == 3  # nosec
 
 
 def test_cli_ping_task_with_limit(capsys, ansible_project):
@@ -82,7 +82,7 @@ def test_cli_ping_task_with_limit(capsys, ansible_project):
 
     out, err = capsys.readouterr()
 
-    assert excinfo.value.code == 3  # nosec
     assert err == ''  # nosec
     assert 'foo | UNREACHABLE!' not in out.strip()  # nosec
     assert 'foobar | UNREACHABLE!' in out.strip()  # nosec
+    assert excinfo.value.code == 3  # nosec
