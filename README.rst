@@ -56,14 +56,14 @@ Features
 Ansible cli wrapper
 +++++++++++++++++++
 
-> Entry point: ``aci-ansible``
+    Entry point: ``aci-ansible``
 
 This is the wrapper over the ``ansible`` command.
 
 Ping
 ~~~~
 
-> ``aci-ansible ping my_hosts [--limit=foo]``
+    ``aci-ansible ping my_hosts [--limit=foo]``
 
 Simple task to run ping module over an host list.
 
