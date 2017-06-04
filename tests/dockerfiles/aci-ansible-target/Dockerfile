@@ -1,4 +1,5 @@
 FROM phusion/baseimage:0.9.22
+LABEL maintainer "Alexandre Chaussier <a.chaussier@infopen.pro>"
 
 # Use base image init system
 CMD ["/sbin/my_init"]
@@ -13,9 +14,11 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 RUN /usr/sbin/enable_insecure_key
 
 # Install Python 2.7, manage a /usr/bin/python link and clean APT cache
-RUN apt-get update && apt-get install -y python2.7 \
+RUN apt-get update \
+        && apt-get install -y python2.7=2.7.12* --no-install-recommends \
         && ln -s /usr/bin/python2.7 /usr/bin/python \
-        && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Expose SSHd port
 EXPOSE 22
