@@ -82,6 +82,13 @@ Ping
 
 Simple task to run ping module over an host list.
 
+Setup
+~~~~~
+
+> ``aci-ansible setup my_hosts [--limit=foo]``
+
+Simple task to run setup module over an host list.
+
 
 Credits
 ---------

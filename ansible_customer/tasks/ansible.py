@@ -33,3 +33,12 @@ def run(context):
     """
 
     context.run('ansible --help')
+
+
+@task
+def setup(context, hosts, limit=''):
+    """
+    Ansible command to run setup module on needed hosts
+    """
+
+    _run_basic_command(context, hosts, 'setup', limit)
