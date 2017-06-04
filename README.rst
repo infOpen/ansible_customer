@@ -53,7 +53,7 @@ We use Invoke_ tasks, linked to their cli to run commands inside contexts.
 Testing
 -------
 
-    You must have Docker installed to run the tests. We use it to check Ansible
+    You must have **Docker >= 1.13.0** installed to run the tests. We use it to check Ansible
     commands
 
 To run tests locally, just run needed environments using tox:

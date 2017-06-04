@@ -17,6 +17,9 @@ env:
   - TOXENV=ansible21-travis
   - TOXENV=ansible22-travis
   - TOXENV=ansible23-travis
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
 install: pip install -U tox
 language: python
 python:
