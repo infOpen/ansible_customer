@@ -57,7 +57,13 @@ Testing
     commands
 
 To run tests locally, just run needed environments using tox:
+
 ``$ TOXENV=py27-ansible20 tox``
+
+You can enable Paramiko debug if you have an error on Docker fixture create
+(ex: ``Exception: Timeout reached while waiting on service!``)
+
+``$ PARAMIKO_DEBUG=1 TOXENV=py27-ansible20 tox``
 
 Features
 --------

@@ -1,5 +1,6 @@
+import logging
 import os
-from paramiko.client import SSHClient, AutoAddPolicy
+from paramiko.client import SSHClient, WarningPolicy
 from paramiko.ssh_exception import AuthenticationException, SSHException, \
     NoValidConnectionsError
 import pytest
@@ -11,15 +12,34 @@ def _check_sshd_service(ip_address, ssh_port):
     Ensure SSHd service running on the container
     """
 
-    ssh_client = SSHClient()
-    ssh_client.set_missing_host_key_policy(AutoAddPolicy())
+    with SSHClient() as ssh_client:
 
-    try:
-        ssh_client.connect(ip_address, port=ssh_port)
-    except AuthenticationException:
-        return True
-    except (SSHException, NoValidConnectionsError):
-        return False
+        ssh_client.set_missing_host_key_policy(WarningPolicy())
+
+        # Add Paramiko transport console logger if requested
+        if os.environ.get('PARAMIKO_DEBUG'):
+            paramiko_logger = logging.getLogger('paramiko.transport')
+            console_handler = logging.StreamHandler()
+            console_handler.setFormatter(
+                logging.Formatter('%(asctime)s | %(levelname)-8s| PARAMIKO: '
+                                  '%(lineno)03d@%(module)-10s| %(message)s')
+            )
+            paramiko_logger.addHandler(console_handler)
+            paramiko_logger.setLevel(logging.DEBUG)
+
+        # Check with bad credentials to raise an AuthenticationException
+        try:
+            ssh_client.connect(  # nosec
+                ip_address,
+                port=ssh_port,
+                username='root',
+                password='foobar',
+                allow_agent=False,
+                look_for_keys=False)
+        except AuthenticationException:
+            return True
+        except (SSHException, NoValidConnectionsError):
+            return False
 
 
 @pytest.fixture(scope='session')
