@@ -50,6 +50,15 @@ We use Invoke_ tasks, linked to their cli to run commands inside contexts.
 * Documentation: https://ansible-customer.readthedocs.io.
 
 
+Testing
+-------
+
+    You must have Docker installed to run the tests. We use it to check Ansible
+    commands
+
+To run tests locally, just run needed environments using tox:
+``$ TOXENV=py27-ansible20 tox``
+
 Features
 --------
 

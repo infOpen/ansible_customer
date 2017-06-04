@@ -1,0 +1,13 @@
+---
+
+# Docker compose used to test commands with containers targets
+version: '3'
+services:
+  aci-ansible-target:
+    container_name: 'aci-ansible-target'
+    build:
+      context: './dockerfiles/aci-ansible-target/'
+      args: {}
+    environment: {}
+    ports:
+      - '22'
