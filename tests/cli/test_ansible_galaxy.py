@@ -3,7 +3,9 @@ Ansible-galaxy CLI testing
 """
 
 import ansible
+from packaging import version
 import pytest
+import re
 from ansible_customer.cli import ansible_galaxy as ansible_galaxy_cli
 
 
@@ -78,15 +80,27 @@ def test_cli_tasks_without_argument(capsys, name):
     assert excinfo.value.code != 0  # nosec
 
 
-@pytest.mark.parametrize('force,status', [
-    (False, 'was installed successfully'),
-    (False, 'is already installed'),
-    (True, 'was installed successfully'),
+@pytest.mark.parametrize('force,status,do_test', [
+    (False, 'was installed successfully', True),
+    (False, 'is already installed', True),
+    (
+        True,
+        'was installed successfully',
+        version.parse(ansible.__version__) < version.parse('2.3')
+    ),
+    (
+        True,
+        'is already installed',
+        version.parse(ansible.__version__) >= version.parse('2.3')
+    ),
 ])
-def test_cli_install_task(capsys, aci_ansible_project, force, status):
+def test_cli_install_task(capsys, aci_ansible_project, force, status, do_test):
     """
     Test cli install task
     """
+
+    if not do_test:
+        pytest.skip('Not apply to this Ansible version')
 
     ansible_galaxy_cli.main('aci-ansible-galaxy install {} {}'.format(
         aci_ansible_project.join('requirements.yml').strpath,
@@ -95,8 +109,10 @@ def test_cli_install_task(capsys, aci_ansible_project, force, status):
     out, err = capsys.readouterr()
 
     assert err == ''  # nosec
-    assert 'infOpen.locales {}'.format(status) in out.strip()  # nosec
-    assert 'infOpen.sysfs {}'.format(status) in out.strip()  # nosec
+
+    for role_name in ['infOpen.locales', 'infOpen.sysfs']:
+        regex = '{}\s*(\(\d+\.\d+\.\d+\))?\s*{}'.format(role_name, status)
+        assert re.search(regex, out.strip()) is not None  # nosec
 
 
 @pytest.mark.parametrize('role_name', [
