@@ -46,7 +46,7 @@ def install(context, requirements_file, force=False):
 
 
 @task
-def list(context, role_name=''):
+def list_roles(context, role_name=''):
     """
     Ansible-galaxy command to list roles
     """

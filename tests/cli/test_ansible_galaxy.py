@@ -82,13 +82,13 @@ def test_cli_install_task(capsys, aci_ansible_project, force, status):
     (''),
     ('infOpen.locales'),
 ])
-def test_cli_list_task(capsys, aci_ansible_project, role_name):
+def test_cli_list_roles_task(capsys, aci_ansible_project, role_name):
     """
-    Test cli list task
+    Test cli list_roles task
     """
 
     ansible_galaxy_cli.main(
-        'aci-ansible-galaxy list --role-name={}'.format(role_name))
+        'aci-ansible-galaxy list_roles --role-name={}'.format(role_name))
     out, err = capsys.readouterr()
 
     assert err == ''  # nosec
