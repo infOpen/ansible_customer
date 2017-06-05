@@ -11,6 +11,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'invoke==0.18.0',
+    'molecule==2.0.0.0rc6',
 ]
 
 test_requirements = []
@@ -35,6 +36,7 @@ setup(
             'aci-ansible=ansible_customer.cli.ansible:main',
             'aci-ansible-galaxy=ansible_customer.cli.ansible_galaxy:main',
             'aci-ansible-playbook=ansible_customer.cli.ansible_playbook:main',
+            'aci-molecule=ansible_customer.cli.molecule:main',
         ]
     },
     include_package_data=True,
