@@ -1,6 +1,6 @@
 import logging
 import os
-from paramiko.client import SSHClient, WarningPolicy
+from paramiko.client import SSHClient, AutoAddPolicy
 from paramiko.ssh_exception import AuthenticationException, SSHException, \
     NoValidConnectionsError
 import pytest
@@ -15,7 +15,7 @@ def _check_sshd_service(ip_address, ssh_port):
 
     with SSHClient() as ssh_client:
 
-        ssh_client.set_missing_host_key_policy(WarningPolicy())
+        ssh_client.set_missing_host_key_policy(AutoAddPolicy())
 
         # Add Paramiko transport console logger if requested
         if os.environ.get('PARAMIKO_DEBUG'):
