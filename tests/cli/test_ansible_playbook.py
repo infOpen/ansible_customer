@@ -123,8 +123,7 @@ def test_cli_run_task_with_limit(capsys, aci_ansible_project):
     """
 
     ansible_playbook_cli.main('aci-ansible-playbook run {} --limit=bar'.format(
-        aci_ansible_project.join('basic_play.yml').strpath,
-        'foo*')
+        aci_ansible_project.join('basic_play.yml').strpath)
     )
     out, err = capsys.readouterr()
 
