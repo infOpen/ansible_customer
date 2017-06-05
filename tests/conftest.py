@@ -5,6 +5,7 @@ from paramiko.ssh_exception import AuthenticationException, SSHException, \
     NoValidConnectionsError
 import pytest
 import requests
+import shutil
 
 
 def _check_sshd_service(ip_address, ssh_port):
@@ -88,6 +89,10 @@ def aci_ansible_structure(tmpdir_factory, aci_ansible_target):
     base_dir.join('hosts').write('\n'.join(hosts_file_content))
     base_dir.join('ssh_key').write(base_image_private_key.content)
     base_dir.join('ssh_key').chmod(0o400)
+    shutil.copy2(
+        os.path.join(os.getcwd(), 'tests/resources/playbooks/basic_play.yml'),
+        base_dir.join('basic_play.yml').strpath
+    )
 
     return base_dir
 
@@ -104,3 +109,5 @@ def aci_ansible_project(aci_ansible_structure):
     os.environ['ANSIBLE_INVENTORY'] = inventory_path
     os.environ['ANSIBLE_HOST_KEY_CHECKING'] = str(False)
     os.environ['ANSIBLE_PRIVATE_KEY_FILE'] = private_key_path
+
+    return aci_ansible_structure

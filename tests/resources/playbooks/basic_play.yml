@@ -1,0 +1,26 @@
+---
+
+- name: 'Basic playbook'
+  hosts: 'all'
+  tasks:
+    - name: 'Ensure openssh-server service running'
+      become: True
+      service:
+        name: 'ssh'
+        state: 'started'
+      tags:
+        - 'playbook::basic-playbook'
+        - 'playbook::basic-playbook::sshd'
+        - 'playbook::basic-playbook::sshd::service'
+
+    - name: 'Ensure root authorized_keys file exists'
+      become: True
+      file:
+        name: '/root/.ssh/authorized_keys'
+        state: 'file'
+      tags:
+        - 'playbook::basic-playbook'
+        - 'playbook::basic-playbook::sshd'
+        - 'playbook::basic-playbook::sshd::keys'
+  tags:
+    - 'playbook::basic-playbook'

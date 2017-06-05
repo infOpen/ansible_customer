@@ -33,6 +33,7 @@ setup(
     entry_points={
         'console_scripts': [
             'aci-ansible=ansible_customer.cli.ansible:main',
+            'aci-ansible-playbook=ansible_customer.cli.ansible_playbook:main',
         ]
     },
     include_package_data=True,
