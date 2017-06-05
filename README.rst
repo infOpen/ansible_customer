@@ -85,10 +85,65 @@ Simple task to run ping module over an host list.
 Setup
 ~~~~~
 
-> ``aci-ansible setup my_hosts [--limit=foo]``
+    ``aci-ansible setup my_hosts [--limit=foo]``
 
 Simple task to run setup module over an host list.
 
+Ansible-playbook cli wrapper
+++++++++++++++++++++++++++++
+
+    Entry point: ``aci-ansible-playbook``
+
+This is the wrapper over the ``ansible-playbook`` command.
+
+List-tags
+~~~~~~~~~
+
+    ``aci-ansible-playbook list_tags my_playbook``
+
+Simple task to list tags managed by a playbook.
+
+List-tasks
+~~~~~~~~~~
+
+    ``aci-ansible-playbook list_tasks my_playbook``
+
+Simple task to list tasks managed by a playbook.
+
+Run
+~~~
+
+    ``aci-ansible-playbook run my_playbook [--limit=foo]``
+
+Simple task to run a playbook.
+
+Ansible-galaxy cli wrapper
+++++++++++++++++++++++++++
+
+    Entry point: ``aci-ansible-galaxy``
+
+This is the wrapper over the ``ansible-galaxy`` command.
+
+Install
+~~~~~~~
+
+    ``aci-ansible-galaxy install requirement_file [-f]``
+
+Simple task to install roles managed by the requirement file.
+
+List-roles
+~~~~~~~~~~
+
+    ``aci-ansible-galaxy list_roles [--role-name=my_role]``
+
+Simple task to list role(s) installed.
+
+Remove
+~~~~~~
+
+    ``aci-ansible-galaxy remove my_role1[,my_role2,...]``
+
+Simple task to remove role(s).
 
 Credits
 ---------
