@@ -32,8 +32,12 @@ matrix:
       env: TOXENV=ansible20-travis
     - python: 3.4
       env: TOXENV=ansible21-travis
+    - python: 3.4
+      env: TOXENV=ansible22-travis
     - python: 3.5
       env: TOXENV=ansible20-travis
     - python: 3.5
       env: TOXENV=ansible21-travis
+    - python: 3.5
+      env: TOXENV=ansible22-travis
 script: tox -e ${TOXENV}
