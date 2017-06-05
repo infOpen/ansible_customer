@@ -1,0 +1,7 @@
+---
+
+- src: 'infOpen.locales'
+  version: '0.3.0'
+
+- src: 'infOpen.sysfs'
+  version: '0.1.0'

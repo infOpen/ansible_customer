@@ -86,12 +86,17 @@ def aci_ansible_structure(tmpdir_factory, aci_ansible_target):
     base_image_private_key = requests.get(BASE_IMAGE_PRIVATE_KEY_URL)
 
     base_dir = tmpdir_factory.mktemp('ansible_config')
+    base_dir.join('roles').mkdir()
     base_dir.join('hosts').write('\n'.join(hosts_file_content))
     base_dir.join('ssh_key').write(base_image_private_key.content)
     base_dir.join('ssh_key').chmod(0o400)
     shutil.copy2(
         os.path.join(os.getcwd(), 'tests/resources/ansible/basic_play.yml'),
         base_dir.join('basic_play.yml').strpath
+    )
+    shutil.copy2(
+        os.path.join(os.getcwd(), 'tests/resources/ansible/requirements.yml'),
+        base_dir.join('requirements.yml').strpath
     )
 
     return base_dir
@@ -105,9 +110,11 @@ def aci_ansible_project(aci_ansible_structure):
 
     inventory_path = aci_ansible_structure.join('hosts').strpath
     private_key_path = aci_ansible_structure.join('ssh_key').strpath
+    roles_path = aci_ansible_structure.join('roles').strpath
 
     os.environ['ANSIBLE_INVENTORY'] = inventory_path
     os.environ['ANSIBLE_HOST_KEY_CHECKING'] = str(False)
     os.environ['ANSIBLE_PRIVATE_KEY_FILE'] = private_key_path
+    os.environ['ANSIBLE_ROLES_PATH'] = roles_path
 
     return aci_ansible_structure
