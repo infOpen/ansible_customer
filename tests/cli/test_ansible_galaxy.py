@@ -2,6 +2,7 @@
 Ansible-galaxy CLI testing
 """
 
+import ansible
 import pytest
 from ansible_customer.cli import ansible_galaxy as ansible_galaxy_cli
 
@@ -22,7 +23,11 @@ def test_cli_without_task(capsys):
     assert exit_info.value.code == 0  # nosec
 
 
-def test_cli_direct_task(capsys):
+@pytest.mark.skipif(
+    not ansible.__version__.startswith('2.0'),
+    reason='Only occurs with Ansible 2.0.x'
+)
+def test_cli_direct_task_ansible_20(capsys):
     """
     Test cli direct task
     """
@@ -35,6 +40,22 @@ def test_cli_direct_task(capsys):
     assert err != ''  # nosec
     assert 'Usage: ansible-galaxy' in out  # nosec
     assert excinfo.value.code != 0  # nosec
+
+
+@pytest.mark.skipif(
+    ansible.__version__.startswith('2.0'),
+    reason='Only occurs with Ansible > 2.0.x'
+)
+def test_cli_direct_task_ansible_21_min(capsys):
+    """
+    Test cli direct task
+    """
+
+    ansible_galaxy_cli.main('aci-ansible-galaxy direct')
+    out, err = capsys.readouterr()
+
+    assert err == ''  # nosec
+    assert 'Usage: ansible-galaxy' in out  # nosec
 
 
 @pytest.mark.parametrize('name', [
