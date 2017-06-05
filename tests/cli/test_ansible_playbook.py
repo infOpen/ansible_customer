@@ -47,7 +47,7 @@ def test_cli_tasks_without_playbook(capsys, name):
     """
 
     with pytest.raises(SystemExit) as excinfo:
-        ansible_playbook_cli.main('aci-ansible {}'.format(name))
+        ansible_playbook_cli.main('aci-ansible-playbook {}'.format(name))
 
     out, err = capsys.readouterr()
 
