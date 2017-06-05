@@ -90,7 +90,7 @@ def aci_ansible_structure(tmpdir_factory, aci_ansible_target):
     base_dir.join('ssh_key').write(base_image_private_key.content)
     base_dir.join('ssh_key').chmod(0o400)
     shutil.copy2(
-        os.path.join(os.getcwd(), 'tests/resources/playbooks/basic_play.yml'),
+        os.path.join(os.getcwd(), 'tests/resources/ansible/basic_play.yml'),
         base_dir.join('basic_play.yml').strpath
     )
 
