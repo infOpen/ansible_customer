@@ -145,6 +145,62 @@ Remove
 
 Simple task to remove role(s).
 
+Molecule cli wrapper
+++++++++++++++++++++
+
+    Entry point: ``aci-molecule``
+
+This is the wrapper over the ``molecule`` command.
+
+Create
+~~~~~~
+
+    ``aci-molecule create scenario_name [--driver=docker]``
+
+Simple task to start test instances.
+
+Converge
+~~~~~~~~
+
+    ``aci-molecule converge scenario_name``
+
+Simple task to configure test instances.
+
+Destroy
+~~~~~~~
+
+    ``aci-molecule destroy scenario_name [--driver=docker]``
+
+Simple task to destroy test instances.
+
+Destroy
+~~~~~~~
+
+    ``aci-molecule list scenario_name [--output=simple]``
+
+Simple task to list test instances status.
+
+Login
+~~~~~
+
+    ``aci-molecule login scenario_name host``
+
+Simple task to login into test instance.
+
+Test
+~~~~
+
+    ``aci-molecule test scenario_name [--driver=docker]``
+
+Simple task to run tests against instances and destroy them.
+
+Verify
+~~~~~~
+
+    ``aci-molecule verify scenario_name``
+
+Simple task to run automated tests against instances.
+
 Credits
 ---------
 
