@@ -53,6 +53,15 @@ def converge(context, scenario):
 
 
 @task
+def dependency(context, scenario):
+    """
+    Molecule command to manage scenario dependencies
+    """
+
+    _run_basic_command(context, 'dependency', scenario)
+
+
+@task
 def destroy(context, scenario, driver_name='docker'):
     """
     Molecule command to destroy instances
