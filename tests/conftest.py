@@ -1,11 +1,29 @@
+import errno
 import logging
 import os
+import sys
+
 from paramiko.client import SSHClient, AutoAddPolicy
 from paramiko.ssh_exception import AuthenticationException, SSHException, \
     NoValidConnectionsError
 import pytest
 import requests
 import shutil
+
+
+def _create_or_update_symplink(target, link_name):
+    """
+    Create or update a symlink
+    """
+
+    try:
+        os.symlink(target, link_name)
+    except OSError, e:
+        if e.errno == errno.EEXIST:
+            os.remove(link_name)
+            os.symlink(target, link_name)
+        else:
+            raise e
 
 
 def _check_sshd_service(ip_address, ssh_port):
@@ -118,3 +136,46 @@ def aci_ansible_project(aci_ansible_structure):
     os.environ['ANSIBLE_ROLES_PATH'] = roles_path
 
     return aci_ansible_structure
+
+
+@pytest.fixture(scope='session')
+def aci_molecule_project(tmpdir_factory):
+    """
+    This fixture manage a basic molecule scenario structure with:
+    * create and destroy playbooks
+    * molecule configuration file
+    * playbook to run
+    """
+
+    base_dir = tmpdir_factory.mktemp('molecule_config')
+    base_dir.join('molecule').mkdir()
+
+    scenario_dir = base_dir.join('molecule').join('basic-scenario')
+    scenario_dir.mkdir()
+    scenario_dir.join('tests').mkdir()
+
+    managed_filenames = [
+        'Dockerfile',
+        'create.yml',
+        'destroy.yml',
+        'molecule.yml',
+        'playbook.yml',
+        'requirements.yml',
+        '.yamllint',
+    ]
+
+    for filename in managed_filenames:
+        shutil.copy2(
+            os.path.join(
+                os.getcwd(),
+                'tests/resources/molecule/{}'.format(filename)),
+            scenario_dir.join('{}'.format(filename)).strpath
+        )
+
+    shutil.copy2(
+        os.path.join(
+            os.getcwd(), 'tests/resources/molecule/tests/test_default.py'),
+        scenario_dir.join('tests').join('test_default.py').strpath
+    )
+
+    _create_or_update_symplink(base_dir.join('molecule').strpath, 'molecule')
