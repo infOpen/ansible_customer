@@ -1,7 +1,6 @@
 import errno
 import logging
 import os
-import sys
 
 from paramiko.client import SSHClient, AutoAddPolicy
 from paramiko.ssh_exception import AuthenticationException, SSHException, \
@@ -18,12 +17,12 @@ def _create_or_update_symplink(target, link_name):
 
     try:
         os.symlink(target, link_name)
-    except OSError, e:
-        if e.errno == errno.EEXIST:
+    except OSError as error:
+        if error.errno == errno.EEXIST:
             os.remove(link_name)
             os.symlink(target, link_name)
         else:
-            raise e
+            raise error
 
 
 def _check_sshd_service(ip_address, ssh_port):
