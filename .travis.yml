@@ -13,8 +13,6 @@ deploy:
   provider: pypi
   user: infOpen
 env:
-  - TOXENV=ansible20-travis
-  - TOXENV=ansible21-travis
   - TOXENV=ansible22-travis
   - TOXENV=ansible23-travis
 install: pip install -U tox
@@ -26,15 +24,7 @@ python:
 matrix:
   exclude:
     - python: 3.4
-      env: TOXENV=ansible20-travis
-    - python: 3.4
-      env: TOXENV=ansible21-travis
-    - python: 3.4
       env: TOXENV=ansible22-travis
-    - python: 3.5
-      env: TOXENV=ansible20-travis
-    - python: 3.5
-      env: TOXENV=ansible21-travis
     - python: 3.5
       env: TOXENV=ansible22-travis
 script: tox -e ${TOXENV}
