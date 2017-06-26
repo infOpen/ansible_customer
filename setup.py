@@ -11,7 +11,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'invoke==0.18.0',
-    'molecule==2.0.0.0rc6',
+    'molecule==2.0.0.0rc9',
 ]
 
 test_requirements = []
