@@ -166,6 +166,13 @@ Converge
 
 Simple task to configure test instances.
 
+Dependency
+~~~~~~~~~~
+
+    ``aci-molecule dependency scenario_name``
+
+Simple task to download dependencies required by scenario.
+
 Destroy
 ~~~~~~~
 
@@ -173,8 +180,8 @@ Destroy
 
 Simple task to destroy test instances.
 
-Destroy
-~~~~~~~
+List
+~~~~
 
     ``aci-molecule list scenario_name [--output=simple]``
 
