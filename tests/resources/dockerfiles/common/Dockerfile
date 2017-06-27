@@ -13,9 +13,11 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Use base image insecure key to login
 RUN /usr/sbin/enable_insecure_key
 
-# Install Python 2.7, manage a /usr/bin/python link and clean APT cache
+# Install Python 2.7, sudo , manage a /usr/bin/python link and clean APT cache
 RUN apt-get update \
-        && apt-get install -y python2.7=2.7.12* --no-install-recommends \
+        && apt-get install -y --no-install-recommends \
+            python2.7=2.7.12* \
+            sudo=1.8.16* \
         && ln -s /usr/bin/python2.7 /usr/bin/python \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

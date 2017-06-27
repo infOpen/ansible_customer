@@ -7,7 +7,7 @@ services:
     container_name: 'aci-ansible-target'
     hostname: 'aci-ansible-target'
     build:
-      context: './resources/dockerfiles/aci-ansible-target/'
+      context: './resources/dockerfiles/common/'
       args: {}
     environment: {}
     ports:
