@@ -15,6 +15,7 @@ deploy:
 env:
   - TOXENV=ansible22-travis
   - TOXENV=ansible23-travis
+  - TOXENV=ansible-devel-travis
 install: pip install -U tox
 language: python
 python:
@@ -22,6 +23,10 @@ python:
   - 3.4
   - 3.5
 matrix:
+  allow_failures:
+    - env: TOXENV=ansible-devel-travis
+    - python: 3.4
+    - python: 3.5
   exclude:
     - python: 3.4
       env: TOXENV=ansible22-travis
