@@ -13,6 +13,6 @@ def test_hosts_file(host):
 
     hosts_file = host.file('/etc/hosts')
 
-    assert hosts_file.exists
-    assert hosts_file.user == 'root'
-    assert hosts_file.group == 'root'
+    assert hosts_file.exists  # nosec
+    assert hosts_file.user == 'root'  # nosec
+    assert hosts_file.group == 'root'  # nosec

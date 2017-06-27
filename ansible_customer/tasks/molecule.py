@@ -71,8 +71,8 @@ def destroy(context, scenario, driver_name='docker'):
     _run_basic_command(context, 'destroy', scenario, options=command_options)
 
 
-@task
-def list(context, scenario, output='simple'):
+@task(name='list')
+def list_instances(context, scenario, output='simple'):
     """
     Molecule command to list status of instances
     """
