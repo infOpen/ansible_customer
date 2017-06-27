@@ -1,0 +1,29 @@
+---
+dependency:
+  name: 'galaxy'
+driver:
+  name: 'docker'
+lint:
+  name: 'yamllint'
+  options:
+    config-file: 'molecule/basic-scenario/.yamllint'
+platforms:
+  - name: 'test-molecule'
+    image: 'molecule_local/phusion/baseimage:0.9.22'
+    dockerfile: 'Dockerfile'
+    command: 'sleep infinity'
+    force: True
+provisioner:
+  name: 'ansible'
+  lint:
+    name: 'ansible-lint'
+  env:
+    ANSIBLE_ROLES_PATH: './roles'
+scenario:
+  name: 'basic-scenario'
+verifier:
+  name: 'testinfra'
+  lint:
+    name: 'flake8'
+  options:
+    vv: True

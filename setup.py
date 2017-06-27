@@ -10,13 +10,11 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'Click>=6.0',
-    # TODO: put package requirements here
+    'invoke==0.18.0',
+    'molecule==2.0.0.0rc9',
 ]
 
-test_requirements = [
-    # TODO: put package test requirements here
-]
+test_requirements = []
 
 setup(
     name='ansible_customer',
@@ -28,12 +26,17 @@ setup(
     url='https://github.com/infOpen/ansible_customer',
     packages=[
         'ansible_customer',
+        'ansible_customer.cli',
+        'ansible_customer.tasks',
     ],
     package_dir={'ansible_customer':
                  'ansible_customer'},
     entry_points={
         'console_scripts': [
-            'ansible_customer=ansible_customer.cli:main'
+            'aci-ansible=ansible_customer.cli.ansible:main',
+            'aci-ansible-galaxy=ansible_customer.cli.ansible_galaxy:main',
+            'aci-ansible-playbook=ansible_customer.cli.ansible_playbook:main',
+            'aci-molecule=ansible_customer.cli.molecule:main',
         ]
     },
     include_package_data=True,
