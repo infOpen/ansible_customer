@@ -87,11 +87,13 @@ def test_cli_tasks_without_argument(capsys, name):
         True,
         'was installed successfully',
         version.parse(ansible.__version__) < version.parse('2.3')
+        or version.parse(ansible.__version__) >= version.parse('2.3.2')
     ),
     (
         True,
         'is already installed',
         version.parse(ansible.__version__) >= version.parse('2.3')
+        and version.parse(ansible.__version__) < version.parse('2.3.2')
     ),
 ])
 def test_cli_install_task(capsys, aci_ansible_project, force, status, do_test):
