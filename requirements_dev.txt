@@ -12,6 +12,6 @@ PyYAML==3.12
 pytest==3.2.2
 pytest-cov==2.5.1
 pytest-docker==0.6.0
-pytest-mock==1.6.2
+pytest-mock==1.6.3
 docker-compose==1.16.1
 packaging==16.8
