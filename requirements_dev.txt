@@ -9,7 +9,7 @@ coverage==4.4.2
 Sphinx==1.6.5
 cryptography==2.1.4
 PyYAML==3.12
-pytest==3.3.0
+pytest==3.3.1
 pytest-cov==2.5.1
 pytest-docker==0.6.1
 pytest-mock==1.6.3
