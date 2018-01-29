@@ -1,2 +1,2 @@
-invoke==0.22.0
+invoke==0.22.1
 molecule==2.7.0
