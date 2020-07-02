@@ -13,5 +13,5 @@ pytest==3.5.1
 pytest-cov==2.5.1
 pytest-docker==0.6.1
 pytest-mock==1.10.0
-docker-compose==1.19.0
+docker-compose==1.26.2
 packaging==17.1
